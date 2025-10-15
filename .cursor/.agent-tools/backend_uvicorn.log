@@ -1,0 +1,26 @@
+INFO:     Started server process [59519]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
+INFO:     127.0.0.1:63406 - "GET / HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63450 - "OPTIONS /embed HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63450 - "POST /embed HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63453 - "POST /embed HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63453 - "POST /embed HTTP/1.1" 200 OK
+/Users/haleymoller/woolf-parens/backend/.venv/lib/python3.13/site-packages/umap/umap_.py:1945: UserWarning: n_jobs value 1 overridden to 1 by setting random_state. Use no seed for parallelism.
+  warn(f"n_jobs value {self.n_jobs} overridden to 1 by setting random_state. Use no seed for parallelism.")
+INFO:     127.0.0.1:63453 - "POST /embed HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63638 - "OPTIONS /embed HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63639 - "OPTIONS /embed HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63638 - "POST /embed HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63639 - "POST /embed HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63793 - "POST /embed HTTP/1.1" 200 OK
+INFO:     127.0.0.1:63794 - "POST /embed HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64082 - "OPTIONS /embed HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64083 - "OPTIONS /embed HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64084 - "OPTIONS /embed HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64085 - "OPTIONS /embed HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64084 - "POST /embed HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64083 - "POST /embed HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64082 - "POST /embed HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64085 - "POST /embed HTTP/1.1" 200 OK

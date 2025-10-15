@@ -2,13 +2,69 @@
 
 :root {
   --background: #ffffff;
-  --foreground: #171717;
+  --foreground: #0B8E8F;
+  /* Brand */
+  --accent-600: #0EA5A6;
+  /* teal (primary) */
+  --accent-700: #0B8E8F;
+  --accent-100: #E6FBFB;
+
+  /* Neutrals */
+  --ink-900: #0B0B0B;
+  --ink-800: #1A1A1A;
+  --ink-600: #3A3A3A;
+  --slate-500: #6B7280;
+  --line-200: #E5E7EB;
+  --bg-50: #FAFAFA;
+  --bg-0: #FFFFFF;
+
+  /* Heatmap (tinted from secondary blue) */
+  --heat-1: color-mix(in srgb, var(--secondary) 12%, transparent);
+  /* low */
+  --heat-2: color-mix(in srgb, var(--secondary) 24%, transparent);
+  /* mid-low */
+  --heat-3: color-mix(in srgb, var(--secondary) 36%, transparent);
+  /* mid */
+  --heat-4: color-mix(in srgb, var(--secondary) 52%, transparent);
+  /* mid-high */
+  --heat-5: var(--secondary);
+  /* high */
+
+  /* Radii / Shadow */
+  --radius-12: 12px;
+  --shadow-card: 0 8px 20px rgba(0, 0, 0, .08);
+
+  /* Poetry rainbow palette for visuals */
+  --poem-1: #ef4444;
+  /* red */
+  --poem-2: #f97316;
+  /* orange */
+  --poem-3: #f59e0b;
+  /* amber */
+  --poem-4: #eab308;
+  /* yellow */
+  --poem-5: #84cc16;
+  /* lime */
+  --poem-6: #22c55e;
+  /* green */
+  --poem-7: #14b8a6;
+  /* teal */
+  --poem-8: #3b82f6;
+  /* blue */
+  --poem-9: #6366f1;
+  /* indigo */
+  --poem-10: #8b5cf6;
+  /* violet */
+  --poem-11: #a855f7;
+  /* purple */
+  --poem-12: #ec4899;
+  /* pink */
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
+  --font-sans: var(--font-lora);
   --font-mono: var(--font-geist-mono);
 }
 
@@ -16,11 +72,210 @@
   :root {
     --background: #0a0a0a;
     --foreground: #ededed;
+    --bg-0: #0D0F12;
+    --bg-50: #0F1216;
+    --ink-900: #F5F7FA;
+    --ink-800: #E7ECF3;
+    --ink-600: #C4CCD7;
+    --line-200: #22262B;
+    --accent-600: #18B2B3;
+    --accent-700: #129A9B;
+    --accent-100: #0A2C2C;
+    /* Heatmap in dark mode (still blue-tinted) */
+    --heat-1: color-mix(in srgb, var(--secondary) 12%, transparent);
+    --heat-2: color-mix(in srgb, var(--secondary) 24%, transparent);
+    --heat-3: color-mix(in srgb, var(--secondary) 36%, transparent);
+    --heat-4: color-mix(in srgb, var(--secondary) 52%, transparent);
+    --heat-5: var(--secondary);
   }
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Lora', serif;
+}
+
+/* Heatmap utility classes */
+.heatmark {
+  border-radius: 6px;
+  padding: 1px 2px;
+  transition: background-color 120ms ease-out, box-shadow 120ms ease-out;
+  outline: none;
+}
+
+.heatmark:focus {
+  outline: 2px solid var(--accent-600);
+}
+
+.heat-1 {
+  background: var(--heat-1);
+}
+
+.heat-2 {
+  background: var(--heat-2);
+}
+
+.heat-3 {
+  background: var(--heat-3);
+}
+
+.heat-4 {
+  background: var(--heat-4);
+}
+
+.heat-5 {
+  background: var(--heat-5);
+}
+
+/* Monochrome override */
+.monochrome .heat-1 {
+  background: #f3f4f6;
+}
+
+.monochrome .heat-2 {
+  background: #e5e7eb;
+}
+
+.monochrome .heat-3 {
+  background: #d1d5db;
+}
+
+.monochrome .heat-4 {
+  background: #9ca3af;
+}
+
+.monochrome .heat-5 {
+  background: #6b7280;
+}
+
+.heatmark.long {
+  border-left: 2px solid var(--accent-600);
+}
+
+.heatmark:hover {
+  filter: brightness(0.95);
+}
+
+/* Tooltip */
+.heat-tooltip {
+  position: fixed;
+  z-index: 50;
+  background: var(--ink-900);
+  color: white;
+  padding: 6px 8px;
+  border-radius: 6px;
+  box-shadow: var(--shadow-card);
+  font-size: 12px;
+}
+
+/* HeatmapPanel container */
+.heatmap {
+  background: var(--bg-0);
+  color: var(--ink-900);
+  border: 1px solid var(--line-200);
+  border-radius: var(--radius-12);
+  box-shadow: var(--shadow-card);
+  padding: 16px;
+  min-height: 420px;
+  max-height: 70vh;
+  overflow: auto;
+  line-height: 1.6;
+  white-space: pre-wrap;
+}
+
+/* Highlights */
+.heat {
+  border-radius: 6px;
+  padding: 1px 3px;
+  transition: background-color 120ms ease, box-shadow 120ms ease;
+  outline: none;
+}
+
+.heat:focus {
+  box-shadow: 0 0 0 2px var(--accent-600);
+}
+
+.heat-long {
+  box-shadow: inset 2px 0 0 0 var(--accent-600);
+}
+
+/* Color scale comes from --heat-1..5 set above */
+.heat-1 {
+  background: var(--heat-1);
+}
+
+.heat-2 {
+  background: var(--heat-2);
+}
+
+.heat-3 {
+  background: var(--heat-3);
+}
+
+.heat-4 {
+  background: var(--heat-4);
+}
+
+.heat-5 {
+  background: var(--heat-5);
+}
+
+/* Monochrome variant */
+.heatmap--mono .heat-1 {
+  background: #F3F4F6;
+}
+
+.heatmap--mono .heat-2 {
+  background: #E5E7EB;
+}
+
+.heatmap--mono .heat-3 {
+  background: #D1D5DB;
+}
+
+.heatmap--mono .heat-4 {
+  background: #9CA3AF;
+}
+
+.heatmap--mono .heat-5 {
+  background: #6B7280;
+}
+
+/* Hover emphasis */
+.heat:hover {
+  filter: saturate(1.1) brightness(0.98);
+}
+
+/* Tooltip for HeatmapPanel */
+.hm-tooltip {
+  position: fixed;
+  z-index: 50;
+  background: var(--ink-900);
+  color: white;
+  border-radius: 8px;
+  padding: 8px 10px;
+  box-shadow: var(--shadow-card);
+  max-width: 360px;
+  pointer-events: none;
+  font-size: 13px;
+}
+
+.hm-tooltip b {
+  font-weight: 600;
+}
+
+.hm-tooltip .row {
+  display: flex;
+  gap: 8px;
+  margin-top: 4px;
+  align-items: center;
+}
+
+.hm-tooltip .copy {
+  border: 1px solid var(--line-200);
+  background: transparent;
+  color: white;
+  padding: 4px 6px;
+  border-radius: 6px;
 }
