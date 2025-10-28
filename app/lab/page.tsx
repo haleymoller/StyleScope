@@ -51,8 +51,8 @@ export default function LabPage() {
   };
 
   async function embedOnce(text: string) {
-    const backend = process.env.NEXT_PUBLIC_BACKEND_URL || "http://localhost:8000";
-    const r = await fetch(`${backend}/embed`, {
+    const backendBase = (process.env.NEXT_PUBLIC_BACKEND_URL || "http://localhost:8000").replace(/\/+$/, '');
+    const r = await fetch(`${backendBase}/embed`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ text, model, chunk_size: chunkSize, method }),
